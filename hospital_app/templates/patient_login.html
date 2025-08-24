@@ -1,0 +1,161 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Login | Hospital Management System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+      body {
+            background: url("{% static 'images/patient.png' %}") no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: flex-start; /* Align items to the left */
+            align-items: center; /* Keep vertical centering */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 40%;
+            max-width: 800px;
+            margin-left: 10%; /* Reduced from 10% to move it further left, adjust as needed */
+            /* If you want it even further left, try 2% or 0 */
+        }
+        .logo {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 50px; /* Adjust size as needed */
+            height: auto;
+        }
+        h2 {
+            color: #198754; /* Bootstrap success color */
+            margin-bottom: 10px;
+            text-align: left;
+            font-size: 24px;
+        }
+        h6 {
+            color: #6c757d;
+            margin-bottom: 20px;
+            text-align: left;
+            font-weight: normal;
+            font-size: 1rem;
+        }
+        .mb-3 {
+            margin-bottom: 15px;
+        }
+        .form-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            text-align: left;
+        }
+        .form-control {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: #198754;
+            box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+        }
+        .form-check {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .btn-primary {
+            background-color: #198754;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #135e3d;
+        }
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        .forgot-password a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        .create-account {
+            text-align: left;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+        .create-account a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .create-account a:hover {
+            text-decoration: underline;
+        }
+        .back-to-home {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Patient Logo">
+        </div>
+        <h2>Patient Login!</h2>
+        <h6>Sign in by entering your information below</h6>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="rememberMe" name="remember_me">
+                <label class="form-check-label" for="rememberMe">Remember me</label>
+            </div>
+            <div class="forgot-password">
+                <a href="{% url 'patient_forgot_password' %}">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Sign in</button>
+            <div class="create-account mt-3">
+                Don't have an account? <a href="{% url 'register_patient' %}">Register here</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
