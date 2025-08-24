@@ -55,6 +55,12 @@ It provides role-based access for **Admin, Doctors, and Patients**.
 ## 5.Run the Development Server
   - python manage.py runserver
 
-
+---
+## 📧 Author
+   - Sai Krishna
+   - GitHub: saikrishna-chary
+   - LinkedIn: linkedin.com/in/saikrishna-thumoju-bab1b026b
+   - Email: saikrishna70950@gmail.com
+---
 
 
