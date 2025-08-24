@@ -20,7 +20,7 @@ It provides role-based access for **Admin, Doctors, and Patients**.
    cd hospital_management
 
 
-## Create a Virtual Environment
+## 1.Create a Virtual Environment
   - python -m venv venv
   - Activate on Windows
   - venv\Scripts\activate
@@ -28,10 +28,10 @@ It provides role-based access for **Admin, Doctors, and Patients**.
   - source venv/bin/activate
 
 
-## Install Dependencies
+## 2.Install Dependencies
 - pip install -r requirements.txt
 
-## Configure Database
+## 3.Configure Database
   - Open settings.py.
   - Update the DATABASES section with your MySQL username, password, and database name. Example:
   - DATABASES = {
@@ -45,14 +45,14 @@ It provides role-based access for **Admin, Doctors, and Patients**.
      - }
    - }
 
-## Apply Migrations
+## 4.Apply Migrations
   - python manage.py makemigrations
   - python manage.py migrate
 
-## Create Superuser (Admin)
+## 5.Create Superuser (Admin)
   - python manage.py createsuperuser
 
-## Run the Development Server
+## 5.Run the Development Server
   - python manage.py runserver
 
 
